@@ -1,0 +1,29 @@
+<div class="row" ng-repeat="turma in turmas">
+  <div class="col-md-2">
+    <time datetime="{{ turma.data_inicio }}" class="icon">
+      <em>{{ turma.data_inicio | date: 'EEE' |  uppercase  }}</em>
+      <strong>{{ turma.data_inicio | date:'MMMM' }}</strong>
+      <span>{{ turma.data_inicio | date:'dd' }}</span>
+    </time>
+  </div>
+  <div class="col-md-5">
+    <div class="turma-detalhes">
+      <b>Turno:</b> {{ turma.turno }}<br />
+      <b>Data inicio:</b> {{ turma.data_inicio | date : 'dd/MM/yyyy' }}<br />
+      <b>Data fim:</b> {{ turma.data_fim  | date : 'dd/MM/yyyy' }}<br />
+
+      <!-- Split button -->
+      <div class="btn-group" dropdown>
+        <button type="button" class="btn btn-danger">Eu quero</button>
+        <button type="button" class="btn btn-danger dropdown-toggle" dropdown-toggle>
+          <span class="caret"></span>
+          <span class="sr-only">Estou interessado!</span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">Matricular</a></li>
+<!--           <li class="divider"></li>
+<li><a href="#">Separated link</a></li>
+ -->        </ul>
+      </div>
+  </div>
+</div>

@@ -1,6 +1,13 @@
 language: node_js
 node_js:
-  - '0.10'
+- '0.10'
 before_script:
-  - 'npm install -g bower grunt-cli'
-  - 'bower install'
+- npm install -g bower grunt-cli
+- bower install
+deploy:
+  provider: heroku
+  api_key:
+    secure: YoVbgLRO8Oe6+LVg4fwBWcZtLpAIkhBIKqgK27CgqbB+0Z9+jHRVpj6Q6b6l8Q9lSukh2IdEDW+jjUvjIXW5CX27LDmFIHX2wMQzAwolC4Pa1PEMQzQTt/zLAArkO0hRV4RSdUINq4TUHPgTRayTZmTbCUrRlOuQqzKXFywgzdE=
+  app: angularjs-turmas
+  on:
+    repo: x25treinamento/angularjs-turmas

@@ -339,7 +339,7 @@ module.exports = function (grunt) {
       },
       heroku: {
         options: {
-          remote: 'git@heroku.com:angularjs-turmas.git',
+          remote: 'https://git.heroku.com/angularjs-turmas.git',
           branch: 'master'
         }
       }

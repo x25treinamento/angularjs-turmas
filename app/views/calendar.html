@@ -2,28 +2,72 @@
   <div class="col-md-2">
     <time datetime="{{ turma.data_inicio }}" class="icon">
       <em>{{ turma.data_inicio | date: 'EEE' |  uppercase  }}</em>
-      <strong>{{ turma.data_inicio | date:'MMMM' }}</strong>
-      <span>{{ turma.data_inicio | date:'dd' }}</span>
+      <strong>{{ turma.data_inicio | date:'MMMM' : 'UTC' }}</strong>
+      <span>{{ turma.data_inicio | date:'dd' : 'UTC' }}</span>
     </time>
   </div>
   <div class="col-md-5">
     <div class="turma-detalhes">
       <b>Turno:</b> {{ turma.turno }}<br />
-      <b>Data inicio:</b> {{ turma.data_inicio | date : 'dd/MM/yyyy' }}<br />
-      <b>Data fim:</b> {{ turma.data_fim  | date : 'dd/MM/yyyy' }}<br />
+      <b>Data inicio:</b>{{ turma.data_inicio | date : 'dd/MM/yyyy' : 'UTC'}}<br />
+      <b>Data fim:</b> {{ turma.data_fim  | date : 'dd/MM/yyyy' : 'UTC' }}<br />
 
       <!-- Split button -->
-      <div class="btn-group" dropdown>
-        <button type="button" class="btn btn-danger">Eu quero</button>
-        <button type="button" class="btn btn-danger dropdown-toggle" dropdown-toggle>
-          <span class="caret"></span>
+      <div class="btn-group" dropdown is-open="status.isopen">
+        <button type="button"
+          class="btn btn-danger dropdown-toggle"
+          dropdown-toggle ng-disabled="disabled">Eu quero <span class="caret"></span></button>
           <span class="sr-only">Estou interessado!</span>
         </button>
         <ul class="dropdown-menu" role="menu">
-          <li><a href="#">Matricular</a></li>
+          <li><a href ng-click="matricular()">Matricular</a></li>
+          <li><a href ng-click="consultarPreco()">Consultar valor</a></li>
+
 <!--           <li class="divider"></li>
 <li><a href="#">Separated link</a></li>
  -->        </ul>
       </div>
   </div>
 </div>
+
+<script type="text/ng-template" id="modalForm.html">
+
+  <div class="modal-header">
+      <h3 class="modal-title">{{ tituloModal }}</h3>
+  </div>
+  <div class="modal-body">
+
+    <form class="form-horizontal">
+
+      <div class="form-group">
+          <label for="inputNome" class="control-label col-xs-2">Nome:</label>
+          <div class="col-xs-10">
+            <input type="text" class="form-control" id="inputNome" placeholder="Nome completo">
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label for="inputEmail" class="control-label col-xs-2">E-mail</label>
+          <div class="col-xs-10">
+            <input type="email" class="form-control" id="inputEmail" placeholder="E-mail">
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label for="inputTelefone" class="control-label col-xs-2">Telefone</label>
+          <div class="col-xs-10">
+            <input type="email" class="form-control" id="inputTelefone" placeholder="Telefone para contato">
+          </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-offset-8 col-xs-4">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="button" class="btn btn-danger">Cancelar</button>
+        </div>
+      </div>
+   </form>
+
+  </div>
+
+</script>
